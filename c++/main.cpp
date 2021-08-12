@@ -8,84 +8,58 @@
 #include<iostream>
 using namespace std;
 
-class Node{
+class Shape {
 public:
-    int value;
-    Node * next;
+    virtual int GetAre() = 0;
+    virtual int setAre() = 0;
 };
-Node * creatNode(int x){
-    Node * temp = new Node;
-    temp -> next = NULL;
-    temp -> value = x;
-    return temp;
-}
-Node * addListNode(Node * p,int x){
-    Node * temp = creatNode(x);
-    p -> next = temp;
-    return temp;
-    
-}
-void print(Node * l,int x){
-    Node * p = l;
-    while(p != NULL){
-        cout << p -> value << " ";
-        p = p -> next;
+class Rectangle : public Shape {
+private:
+    int dai;
+    int rong;
+public:
+    Rectangle(int dai,int rong){
+        this -> dai = dai;
+        this -> rong = rong;
     }
-}
-Node * addHead(Node * l,int x){
-    
-    Node * temp = new Node;
-    temp -> value = x;
-    temp -> next = l;
-    l = temp;
-    return l;
-    
-}
-Node * Tail(Node * l,int x){
-    Node * p = l;
-    while (p -> next != NULL) {
-        p = p -> next;
+    int setdai() {
+        return dai;
     }
-    Node * temp = new Node;
-    temp -> value = x;
-    temp -> next = NULL;
-    p -> next = temp;
-    return l;
-    
-}
-Node * At(Node * l,int x,int k){
-    Node * p = l;
-    for (int i = 0; i < k -1; i++) {
-        p = p -> next;
+    int setrong() {
+        return rong;
     }
-    Node * temp = new Node;
-    temp -> value = x;
-    temp -> next = p -> next;
-    p -> next = temp;
-    return l;
-}
+    int GetAre() {
+        return dai * rong;
+    }
+    int setAre() {
+        return (dai + rong) * 2;
+    }
+};
+class Circle : public Shape {
+private:
+    double d;
+public:
+    Circle(int d){
+        this -> d = d;
+    }
+    int setD(){
+        return d;
+    }
+    int  GetAre() {
+        return d * d * 3.14;
+    }
+    int setAre() {
+        return d * 2 * 3.14;
+    }
+};
 int main() {
-    int n,x,k;
-    cin >> n;
-    cin >> x;
-    Node * l = creatNode(x);
-    Node * p = l;
-    for(int i = 1;i < n;i++){
-        cin >> x;
-        p = addListNode(p, x);
-    }
-    cin >> x >> k;
-    if ( k == 0){
-        l = addHead(l, x);
-    }
-    else if (k == n) {
-        l = Tail(l, x);
-    }
-    else {
-        l = At(l, x, k);
-    }
-    print(l, x);
+    int dai,rong,d;
+    cin >> dai >> rong;
+    cin >> d;
+    Rectangle x(dai,rong);
+    Circle y(d);
+    cout << "dien tich rectangle: " << x.GetAre() << "chu vi: " << x.setAre() << endl;
+    cout << "dien tich: " << y.GetAre() << "chu vi: " << y.setAre() << endl;
     return 0;
+    
 }
-                        
-

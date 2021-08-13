@@ -58,8 +58,8 @@ int main() {
     cin >> d;
     Rectangle x(dai,rong);
     Circle y(d);
-    cout << "dien tich rectangle: " << x.GetAre() << "chu vi: " << x.setAre() << endl;
-    cout << "dien tich: " << y.GetAre() << "chu vi: " << y.setAre() << endl;
+    cout << "dien tich rectangle: " << x.GetAre() << " chu vi: " << x.setAre() << endl;
+    cout << "dien tich: " << y.GetAre() << " chu vi: " << y.setAre() << endl;
     return 0;
     
 }
